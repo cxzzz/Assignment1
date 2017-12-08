@@ -6,5 +6,5 @@ abstract class UIObject {
   }
   
   abstract void render();
-  
+  abstract void update();
 }
