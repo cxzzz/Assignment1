@@ -11,8 +11,8 @@ class Border extends UIObject {
     frame = createShape();
     frame.beginShape();
     frame.strokeWeight(1);
-    frame.fill(0, 255, 255, 40);
-    frame.stroke(0, 255, 255, 220);
+    frame.fill(0, 255, 180, 40);
+    frame.stroke(0, 255, 180, 220);
     frame.vertex(0, 0);
     frame.vertex(0, 150);
     frame.vertex(20, 170);
