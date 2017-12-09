@@ -1,6 +1,11 @@
 void setup() {
+  // Size of canvas
   size(800, 600);
+  
+  // Setting framerate to 60
   frameRate(60);
+  
+  // Adding UI Objects
   uiObjects.add(new Border(30, height - 200, 0));
   uiObjects.add(new Border(width - 30, 200, PI));
   uiObjects.add(new Border(200, 30, HALF_PI));
@@ -10,11 +15,13 @@ void setup() {
   uiObjects.add(new Ship(width/2, height/2));
 }
 
+// Arraylist of objects from ui
 ArrayList<UIObject> uiObjects = new ArrayList<UIObject>();
 
 
 void draw() {
   background(0);
+  // iterate through the array list to render and update UI
   for (int i = uiObjects.size() - 1; i > -1; i--) {
     UIObject uiObj = uiObjects.get(i);
     uiObj.render();
