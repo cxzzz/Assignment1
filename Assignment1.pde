@@ -13,6 +13,9 @@ void setup() {
   uiObjects.add(new Circle(width/2, height/2, 120));
   uiObjects.add(new Radar(620, 125, 250, 125));
   uiObjects.add(new Ship(width/2, height/2));
+  uiObjects.add(new Button(100, 150, "Ship Detail", 100, 30));
+  uiObjects.add(new Button(100, 250, "Show Mission", 100, 30));
+  uiObjects.add(new Bars(575, 500, "Signal Bar"));
 }
 
 // Arraylist of objects from ui
@@ -21,6 +24,8 @@ ArrayList<UIObject> uiObjects = new ArrayList<UIObject>();
 
 void draw() {
   background(0);
+
+  
   // iterate through the array list to render and update UI
   for (int i = uiObjects.size() - 1; i > -1; i--) {
     UIObject uiObj = uiObjects.get(i);
