@@ -1,15 +1,10 @@
 class Circle extends UIObject {
   float radius;
   float theta;
-  float ang3;
-  float ang2;
 
-  
   Circle(float x, float y, float r) {
     super(x, y);
     theta = 0;
-    ang2 = 0;
-    ang3 = 0;
     this.radius = r;
   }
 
@@ -18,43 +13,21 @@ class Circle extends UIObject {
     noFill();
     stroke(0, 255, 255);
     strokeWeight(2);
-    ellipse(pos.x, pos.y, radius * 0.3, radius * 0.3);
     strokeWeight(3);
-    stroke(0, 255, 255, 50);
-    ellipse(pos.x, pos.y, radius * 0.305, radius * 0.305);
-    // arcs
-    noFill();
-    stroke(255, 0, 0);
+    stroke(0, 255, 255);
+    ellipse(pos.x, pos.y, radius * 2, radius * 2);
+    stroke(255);
     strokeCap(SQUARE);
-    strokeWeight(10);
-    
+    strokeWeight(5);
+    arc(pos.x, pos.y, radius * 2, radius * 2, 0, PI);
+    // arcs
+
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    arc(0, 0, radius * 2, radius * 2, 0, PI);
+
     popMatrix();
-    
-    stroke(255, 255, 0);
-    pushMatrix();
-    translate(pos.x, pos.y);
-    rotate(ang2);
-    arc(0, 0, radius * 1.4, radius * 1.4, 0, PI);
-    popMatrix();
-    
-    if (dist(mouseX, mouseY, pos.x, pos.y) < radius * 0.3 / 2) {
-      stroke(255, 0, 0);
-      strokeWeight(1);
-      pushMatrix();
-      translate(pos.x, pos.y);
-      rotate(ang3);
-      arc(0, 0, radius * 0.4, radius * 0.4, 0, HALF_PI);
-      popMatrix();        
-    }
   }
 
-  void update() {
-    theta += 0.01;
-    ang2 -= 0.02;
-    ang3 += 0.2;
-  }
+  void update() {}
 }

@@ -5,8 +5,9 @@ void setup() {
   uiObjects.add(new Border(width - 30, 200, PI));
   uiObjects.add(new Border(200, 30, HALF_PI));
   uiObjects.add(new Border(width - 200, height - 30, PI + HALF_PI));
-  uiObjects.add(new Circle(width/2, height/2, 100));
+  uiObjects.add(new Circle(width/2, height/2, 120));
   uiObjects.add(new Radar(620, 125, 250, 125));
+  uiObjects.add(new Ship(width/2, height/2));
 }
 
 ArrayList<UIObject> uiObjects = new ArrayList<UIObject>();
