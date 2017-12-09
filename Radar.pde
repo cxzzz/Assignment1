@@ -1,11 +1,21 @@
 class Radar extends UIObject {
   float w;
   float h;
+  float ly;
+  float lx;
+  float dX;
+  float dY;
   
+  PImage map;
   Radar (float x, float y, float w, float h) {
     super(x, y);
     this.w = w;
     this.h = h;
+    lx = pos.x - w/2;
+    ly = pos.y - h/2;
+    dX = 0.3;
+    dY = 0.2;
+    map = loadImage("map.png");
   }
   
   void render() {
@@ -13,18 +23,28 @@ class Radar extends UIObject {
     stroke(0 ,255, 180);
     strokeWeight(1);
     rectMode(CENTER);
-    rect(pos.x, pos.y, w, h);
-    if (second() % 2 == 0) {
-      for (int i = 0; i < 5; i++) {
-        float x = map(i, 0, 4, pos.x - w/2, pos.x + w/2);
-        float y = map(i, 0, 4, pos.y - h/2, pos.y + h/2);
-        line(x, pos.y - h/2, x, pos.y + h/2);
-        line(pos.x - w/2 , y, pos.x + w/2, y);
-      }
-    }
+    rect(pos.x, pos.y, w, h, 5);
+    imageMode(CENTER);
+    image(map, pos.x, pos.y);
+    stroke(0, 255, 255, 90);
+    line(pos.x - w/2, ly, pos.x + w/2, ly);
+    line(lx, pos.y - h/2, lx, pos.y + h/2);
   }
   
-  void update(){
-  
+  void update() {
+    lx += dX;
+    ly += dY;
+    if (ly < pos.y - h/2) {
+      dY = 0.2;
+    }
+    if (ly > pos.y + h/2) {
+      dY = -0.2;  
+    }
+    if (lx < pos.x - w/2) {
+      dX = 0.3;
+    }
+    if (lx > pos.x + w/2) {
+      dX = -0.3;
+    }
   }
 }  

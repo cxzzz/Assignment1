@@ -1,7 +1,7 @@
 class Circle extends UIObject {
   float radius;
   float theta;
-  float jitter;
+  float ang3;
   float ang2;
 
   
@@ -9,6 +9,7 @@ class Circle extends UIObject {
     super(x, y);
     theta = 0;
     ang2 = 0;
+    ang3 = 0;
     this.radius = r;
   }
 
@@ -39,10 +40,21 @@ class Circle extends UIObject {
     rotate(ang2);
     arc(0, 0, radius * 1.4, radius * 1.4, 0, PI);
     popMatrix();
+    
+    if (dist(mouseX, mouseY, pos.x, pos.y) < radius * 0.3 / 2) {
+      stroke(255, 0, 0);
+      strokeWeight(1);
+      pushMatrix();
+      translate(pos.x, pos.y);
+      rotate(ang3);
+      arc(0, 0, radius * 0.4, radius * 0.4, 0, HALF_PI);
+      popMatrix();        
+    }
   }
 
   void update() {
-    theta += 0.1;
+    theta += 0.01;
     ang2 -= 0.02;
+    ang3 += 0.2;
   }
 }

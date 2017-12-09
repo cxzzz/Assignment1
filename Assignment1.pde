@@ -1,7 +1,6 @@
 void setup() {
   size(800, 600);
   frameRate(60);
-  smooth();
   uiObjects.add(new Border(30, height - 200, 0));
   uiObjects.add(new Border(width - 30, 200, PI));
   uiObjects.add(new Border(200, 30, HALF_PI));

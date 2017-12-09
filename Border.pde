@@ -6,7 +6,6 @@ class Border extends UIObject {
     // getting pvec from super class UIObject
     super(x, y);
     this.theta = theta;
-    
     // shap creation
     frame = createShape();
     frame.beginShape();
