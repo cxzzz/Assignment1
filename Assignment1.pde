@@ -1,6 +1,6 @@
 /*
   OOP Assignment 1 - Scifi UI
-  Chenxi Zhang
+  Chenxi Zhang - C16434996
   Date: 10/12/17
 */
 
@@ -37,10 +37,12 @@ void setup() {
   mainObj.add(new Ship(width/2, height/2));
   mainObj.add(new Button(100, 150, "Ship Detail", 100, 30));
   mainObj.add(new Button(100, 250, "Show Mission", 100, 30));
-  mainObj.add(new Bars(575, 500, "Signal Bar"));
+  mainObj.add(new Bars(80, 525, "Signal Bar"));
   // ship screen objects
   loadData(); // loads ship data from csv
-  shipUIObj.add(new Button(100, 350, "Back", 100, 30));  
+  shipUIObj.add(new Button(125, 500, "Back", 100, 30));
+  shipUIObj.add(new Ship(125, 150));
+  shipUIObj.add(new CircleRadar(width/2 + 250, height/2 + 175, 80));
 }
 
 void draw() {
@@ -62,13 +64,16 @@ void draw() {
   
   if (shipUI) {
     fill(255);
-    textSize(12);
+    textSize(14);
+    float x = 275;
+    float y = 100;
+    float gap = 30;
     for (ShipInfo s : shipdata) {
-      text(s.shipName, 300, 300);
-      text(s.weight, 300, 350);
-      text(s.year, 300, 400);
-      text(s.maxSpeed, 300, 450);
-      text(s.firingRate, 300, 500);
+      text("Ship Name: " + s.shipName, x, y);
+      text("Ship Weight: " + s.weight, x, y + gap);
+      text(s.year, x, y + gap * 2);
+      text(s.maxSpeed, x, y + gap * 3);
+      text(s.firingRate, x, y + gap * 4);
     }
     for (int i = shipUIObj.size() - 1; i > -1; i--) {
       UIObject o = shipUIObj.get(i);
@@ -99,10 +104,21 @@ void mousePressed() {
       // detect if second button was pressed
       if (dist(mouseX, 250, 100, 250) < 50) {
         if (dist(100, 250, 100, mouseY) < 15) {
-          // switch to shipUI
+          // switch to missionUI
           mainUI = !mainUI;
           missionUI = !missionUI;
         }
+      }
+    }
+  }
+  
+  if (shipUI) {
+    // Detect user clicked back
+    if (dist(mouseX, 500, 125, 500) < 50) {
+      if (dist(125, 500, 125, mouseY) < 15) {
+        // switch to mainUI
+        shipUI = !shipUI;
+        mainUI = !mainUI;
       }
     }
   }
