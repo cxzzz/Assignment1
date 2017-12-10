@@ -8,6 +8,8 @@
 ArrayList<UIObject> mainObj = new ArrayList<UIObject>();
 ArrayList<UIObject> frame = new ArrayList<UIObject>();
 ArrayList<UIObject> shipUIObj = new ArrayList<UIObject>();
+ArrayList<ShipInfo> shipdata = new ArrayList<ShipInfo>(); 
+
 
 // flags for ui control
 boolean mainUI, shipUI, missionUI;
@@ -37,6 +39,8 @@ void setup() {
   mainObj.add(new Button(100, 250, "Show Mission", 100, 30));
   mainObj.add(new Bars(575, 500, "Signal Bar"));
   // ship screen objects
+  loadData(); // loads ship data from csv
+  shipUIObj.add(new Button(100, 350, "Back", 100, 30));  
 }
 
 void draw() {
@@ -57,7 +61,21 @@ void draw() {
   }
   
   if (shipUI) {
-    text("Hello World", width/2, height/2);  
+    fill(255);
+    textSize(12);
+    for (ShipInfo s : shipdata) {
+      text(s.shipName, 300, 300);
+      text(s.weight, 300, 350);
+      text(s.year, 300, 400);
+      text(s.maxSpeed, 300, 450);
+      text(s.firingRate, 300, 500);
+    }
+    for (int i = shipUIObj.size() - 1; i > -1; i--) {
+      UIObject o = shipUIObj.get(i);
+      o.render();
+      o.update();
+    }
+    
   }
   
   if (missionUI) {
@@ -87,5 +105,14 @@ void mousePressed() {
         }
       }
     }
+  }
+}
+
+void loadData() {
+  Table table = loadTable("shipdata.csv", "header");
+  // Load and add data into arraylist
+  for (TableRow r : table.rows()) {
+    ShipInfo s = new ShipInfo(r);
+    shipdata.add(s);
   }
 }
