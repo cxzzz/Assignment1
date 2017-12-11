@@ -41,5 +41,6 @@ class Ship extends UIObject {
     shape(s, pos.x, pos.y - 60);
   }
   
-  void update() {} 
+  void update() {
+  } 
 }

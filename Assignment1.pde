@@ -8,8 +8,9 @@
 ArrayList<UIObject> mainObj = new ArrayList<UIObject>();
 ArrayList<UIObject> frame = new ArrayList<UIObject>();
 ArrayList<UIObject> shipUIObj = new ArrayList<UIObject>();
+ArrayList<UIObject> missionUIObj = new ArrayList<UIObject>();
 ArrayList<ShipInfo> shipdata = new ArrayList<ShipInfo>(); 
-
+ArrayList<StarMap> stars = new ArrayList<StarMap>();
 
 // flags for ui control
 boolean mainUI, shipUI, missionUI;
@@ -43,6 +44,10 @@ void setup() {
   shipUIObj.add(new Button(125, 500, "Back", 100, 30));
   shipUIObj.add(new Ship(125, 150));
   shipUIObj.add(new CircleRadar(width/2 + 250, height/2 + 175, 80));
+  // mission screen objects
+  loadMap();
+  missionUIObj.add(new Button(125, 500, "Back", 100, 30));
+  missionUIObj.add(new Map(0, 0));
 }
 
 void draw() {
@@ -63,28 +68,34 @@ void draw() {
   }
   
   if (shipUI) {
-    fill(255);
+    fill(random(0), random(255), random(0));
     textSize(14);
-    float x = 275;
-    float y = 100;
+    textAlign(LEFT);
+    float x = 75;
+    float y = 275;
     float gap = 30;
     for (ShipInfo s : shipdata) {
       text("Ship Name: " + s.shipName, x, y);
       text("Ship Weight: " + s.weight, x, y + gap);
-      text(s.year, x, y + gap * 2);
-      text(s.maxSpeed, x, y + gap * 3);
-      text(s.firingRate, x, y + gap * 4);
+      text("Year Made: " + s.year, x, y + gap * 2);
     }
     for (int i = shipUIObj.size() - 1; i > -1; i--) {
       UIObject o = shipUIObj.get(i);
       o.render();
       o.update();
     }
+   
     
   }
   
   if (missionUI) {
-    text("Lorem Ipsum", width/2, height/2);  
+    text("Lorem Ipsum", width/2, height/2);
+    for (int i = missionUIObj.size() - 1; i > -1; i--) {
+      UIObject o = missionUIObj.get(i);
+      o.render();
+      o.update();
+    }
+    
   }
   
   println(frameRate);
@@ -92,22 +103,20 @@ void draw() {
 
 void mousePressed() {
   if (mainUI) {
-    if (mousePressed) {
-      // detect if first button was pressed
-      if (dist(mouseX, 150, 100, 150) < 50) {
-        if (dist(100, 150, 100, mouseY) < 15) {
-          // switch to shipUI
-          mainUI = !mainUI;
-          shipUI = !shipUI;
-        }
+    // detect if first button was pressed
+    if (dist(mouseX, 150, 100, 150) < 50) {
+      if (dist(100, 150, 100, mouseY) < 15) {
+        // switch to shipUI
+        mainUI = !mainUI;
+        shipUI = !shipUI;
       }
-      // detect if second button was pressed
-      if (dist(mouseX, 250, 100, 250) < 50) {
-        if (dist(100, 250, 100, mouseY) < 15) {
-          // switch to missionUI
-          mainUI = !mainUI;
-          missionUI = !missionUI;
-        }
+    }
+    // detect if second button was pressed
+    if (dist(mouseX, 250, 100, 250) < 50) {
+      if (dist(100, 250, 100, mouseY) < 15) {
+        // switch to missionUI
+        mainUI = !mainUI;
+        missionUI = !missionUI;
       }
     }
   }
@@ -122,13 +131,43 @@ void mousePressed() {
       }
     }
   }
+  
+  if (missionUI) {
+    // Detect user clicked back
+    if (dist(mouseX, 500, 125, 500) < 50) {
+      if (dist(125, 500, 125, mouseY) < 15) {
+        // switch to mainUI
+        missionUI = !missionUI;
+        mainUI = !mainUI;
+      }
+    }
+  }  
 }
 
+
+/*
+  Function for loading ship's data
+*/
 void loadData() {
   Table table = loadTable("shipdata.csv", "header");
   // Load and add data into arraylist
   for (TableRow r : table.rows()) {
     ShipInfo s = new ShipInfo(r);
     shipdata.add(s);
+    shipUIObj.add(new ContainerBars(350, 150, 100, 25, "Max Speed", s.maxSpeed));
+    shipUIObj.add(new ContainerBars(350, 200, 100, 25, "FiringRate", s.firingRate));
+  }
+}
+
+/*
+  Function for loading the map for mission's UI
+*/
+
+void loadMap() {
+  Table table = loadTable("starset.csv", "header");
+  
+  for (TableRow r : table.rows()) {
+    StarMap star = new StarMap(r);
+    stars.add(star);
   }
 }
