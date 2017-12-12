@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 /*
   OOP Assignment 1 - Scifi UI
   Chenxi Zhang - C16434996
@@ -16,6 +18,9 @@ ArrayList<UIObject> shipSimObj = new ArrayList<UIObject>();
 // flags for ui control
 boolean mainUI, shipUI, missionUI, shipSimUI;
 
+// sound file var
+SoundFile bgmusic;
+
 void setup() {
   // Size of canvas
   size(800, 600);
@@ -27,6 +32,7 @@ void setup() {
   mainUI = true;
   shipUI = false;
   missionUI = false;
+  shipSimUI = false;
   
   // frame "borders"
   frame.add(new Border(30, height - 200, 0));
@@ -51,12 +57,14 @@ void setup() {
   missionUIObj.add(new Map(0, 0));
   missionUIObj.add(new Button(650, 420, "Start", 100, 30));
   // ship simulation objects
-  shipSimObj.add(new ShipHUD(width/2, 475));  
+  shipSimObj.add(new ShipHUD(width/2, 475));
+  
+  bgmusic = new SoundFile(this, "bgmusic.mp3");
+  bgmusic.play();
 }
 
 void draw() {
   background(0);
-  
   for (int i = frame.size() - 1; i > -1; i--) {
     UIObject border = frame.get(i);
     border.render();
