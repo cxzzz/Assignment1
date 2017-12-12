@@ -48,6 +48,7 @@ void setup() {
   loadMap();
   missionUIObj.add(new Button(125, 500, "Back", 100, 30));
   missionUIObj.add(new Map(0, 0));
+  missionUIObj.add(new Button(650, 420, "Start", 100, 30));
 }
 
 void draw() {
@@ -89,13 +90,17 @@ void draw() {
   }
   
   if (missionUI) {
-    text("Lorem Ipsum", width/2, height/2);
     for (int i = missionUIObj.size() - 1; i > -1; i--) {
       UIObject o = missionUIObj.get(i);
       o.render();
       o.update();
     }
-    
+    stroke(0, 255, 180);
+    strokeWeight(2);
+    rectMode(CENTER);
+    noFill();
+    rect(width/2, height/2 + 100, 660, 120);
+    text("Its 2090, You are required to keep this world in peace, press start to start mission", width/2 - 70, height/2 + 60);
   }
   
   println(frameRate);
