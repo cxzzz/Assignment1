@@ -10,6 +10,12 @@ In the ship detail UI, it has another instance of the Ship and some details load
 
 Then, on the mission UI, it has the map drawn which its data comes from another csv file, and it has the mission detail to allow user to enter the mission. The mission was not really up to point since the simulation UI is only a ship simulation.
 
+Instruction for use:
+
+mostly mouse interactions, when fuel is low in simulation you can use 'x' to go back to main screen
+
+The assignment was very hard to do due to the case that I haven't watched any sci-fi or anything related to it, the only sci-fi that I've got in touch with was a game call StarCraft, so I find it really hard to planning this project. The ship pshape was a simple version of the ship on Assignment image 2.
+
 Some screenshots:
 
 ![Main Screen](https://github.com/cxzzz/Assignment1/blob/master/data/main.png?raw=true "main screen")
