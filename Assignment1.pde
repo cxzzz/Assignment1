@@ -11,9 +11,10 @@ ArrayList<UIObject> shipUIObj = new ArrayList<UIObject>();
 ArrayList<UIObject> missionUIObj = new ArrayList<UIObject>();
 ArrayList<ShipInfo> shipdata = new ArrayList<ShipInfo>(); 
 ArrayList<StarMap> stars = new ArrayList<StarMap>();
+ArrayList<UIObject> shipSimObj = new ArrayList<UIObject>();
 
 // flags for ui control
-boolean mainUI, shipUI, missionUI;
+boolean mainUI, shipUI, missionUI, shipSimUI;
 
 void setup() {
   // Size of canvas
@@ -146,7 +147,19 @@ void mousePressed() {
         mainUI = !mainUI;
       }
     }
-  }  
+    // Detect user clicked back
+    if (dist(mouseX, 420, 650, 420) < 50) {
+      if (dist(650, 420, 650, mouseY) < 15) {
+        // switch to ship simluation UI
+        missionUI = !missionUI;
+        shipSimUI = !shipSimUI;
+      }
+    }    
+  }
+  
+  if (shipSimUI) {
+      
+  }
 }
 
 
