@@ -38,7 +38,7 @@ class CircleRadar extends UIObject {
   
   void update(){
     if (frameCount % 10 == 0) {
-      freq += 0.1;
+      freq += 0.13;
       if (freq > 2) {
         freq = 0.1;  
       }

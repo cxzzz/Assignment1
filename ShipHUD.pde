@@ -2,10 +2,11 @@ class ShipHUD extends UIObject {
   
   float fuel;
   float speed;
-  
+    
   ShipHUD(float x, float y) {
     super(x, y);
     fuel = 100.0;
+    speed = 0;
   }
   
   void render(){
@@ -28,15 +29,24 @@ class ShipHUD extends UIObject {
     fill(0, 255, 0);
     rectMode(CORNER);
     rect(-300, -70, fuel, 30);
+    rect(-300, -30, map(speed, 0, 90, 0, 100), 30);
     popMatrix();
-    if (keyPressed) {
-      if (keyCode == 'w') {
-          
-      }
-    }
   }
   
-  void update(){
+  void update() {
+    if (keyPressed) {
+      if (key == 'w') {
+        speed += 0.02 * 2;  
+      }
+      if (speed > 0) {
+        if (key == 's') {
+          speed -= 0.02 * 2;  
+        }
+      } else {
+        speed = 0;  
+      }
+    }
+    
     if (fuel > 0) {
       if (second() % 3 == 0) {
         fuel -= random(0.01, 0.03);  
