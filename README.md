@@ -12,12 +12,13 @@ Then, on the mission UI, it has the map drawn which its data comes from another 
 
 Some screenshots:
 
-![alt text](https://github.com/cxzzz/Assignment1/data/main.png "main screen")
-![alt text](https://github.com/cxzzz/Assignment1/data/ship.png "shipUI screen")
-![alt text](https://github.com/cxzzz/Assignment1/data/mission.png "missionUI screen")
-![alt text](https://github.com/cxzzz/Assignment1/data/sim.png "shipSim screen")
+![Main Screen](https://github.com/cxzzz/Assignment1/tree/master/datamain.png "main screen")
+![ShipUI Screen](https://github.com/cxzzz/Assignment1/tree/master/dataship.png "shipUI screen")
+![missionUI Screen](https://github.com/cxzzz/Assignment1/tree/master/datamission.png "missionUI screen")
+![shipSim Screen](https://github.com/cxzzz/Assignment1/tree/master/datasim.png "shipSim screen")
 
 [Background Music](https://www.melodyloops.com/my-music/longoloops/wild-rave/)
 
 Video of my assignment:
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/UQjeWWHoFa4/0.jpg)](http://www.youtube.com/watch?v=UQjeWWHoFa4)
+
+[![Youtube Video](http://img.youtube.com/vi/UQjeWWHoFa4/0.jpg)](http://www.youtube.com/watch?v=UQjeWWHoFa4)
