@@ -12,10 +12,10 @@ Then, on the mission UI, it has the map drawn which its data comes from another 
 
 Some screenshots:
 
-![Main Screen](https://github.com/cxzzz/Assignment1/tree/master/data/main.png "main screen")
-![ShipUI Screen](https://github.com/cxzzz/Assignment1/tree/master/data/ship.png "shipUI screen")
-![missionUI Screen](https://github.com/cxzzz/Assignment1/tree/master/data/mission.png "missionUI screen")
-![shipSim Screen](https://github.com/cxzzz/Assignment1/tree/master/data/sim.png "shipSim screen")
+![Main Screen](https://github.com/cxzzz/Assignment1/blob/master/data/main.png?raw=true "main screen")
+![ShipUI Screen](https://github.com/cxzzz/Assignment1/blob/master/data/ship.png?raw=true "shipUI screen")
+![missionUI Screen](https://github.com/cxzzz/Assignment1/blob/master/data/mission.png?raw=true "missionUI screen")
+![shipSim Screen](https://github.com/cxzzz/Assignment1/blob/master/data/sim.png?raw=true "shipSim screen")
 
 [Background Music](https://www.melodyloops.com/my-music/longoloops/wild-rave/)
 
